@@ -25,3 +25,7 @@ AVE stands for Angular Visual Editor, the purpose of this project is to create a
     * State management
 
 ... and others in the future
+
+## Boostrap
+
+This app is created using https://github.com/maximegris/angular-electron.
