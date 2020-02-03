@@ -1,0 +1,31 @@
+/**
+Put here global variables
+*/
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500,700&display=swap');
+
+$mainFont: 'Roboto Mono', monospace;
+
+$colors: (
+    'background': #13191b,
+    'surface':#000,
+    'error': #FF536F,
+    'primary':#83A7FF,
+    'primary-variant':#88DCFF,
+    'secondary':#C98FEC,
+    'on-primary': #000000,
+    'on-secondary': #000000,
+    'on-background': #FFFFFF,
+    'on-surface': #FFFFFF,
+    'on-error': #000000
+
+);
+
+$fontSizes: (
+    'small': .75rem,
+    'normal': 1rem
+);
+
+$padding: (
+    'small': .25rem,
+    'normal': 1rem
+);

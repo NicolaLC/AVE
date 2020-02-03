@@ -1,0 +1,32 @@
+app-tab-view {
+    height: 100%;
+    width: 100%;
+
+    background-color: map-get($map: $colors, $key: surface);
+    
+    [grid] {
+        height: 100%;
+        .Tab {
+            height: 100%;
+            max-width: 200px;
+            
+            color: map-get($map: $colors, $key: primary);
+            font-weight: bold;
+            font-size: map-get($map: $fontSizes, $key: normal);
+            text-transform: uppercase;
+            text-decoration: none;
+
+            cursor: pointer;
+
+            &.Active {
+                background-color: map-get($map: $colors, $key: secondary);
+                color: map-get($map: $colors, $key: on-secondary);
+            }
+
+            fa-icon {
+                margin-right: map-get($map: $padding, $key: small);
+                font-size: map-get($map: $fontSizes, $key: small);
+            }
+        }
+    }
+}

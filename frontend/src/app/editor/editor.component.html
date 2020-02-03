@@ -1,0 +1,52 @@
+<div
+    grid
+    [templateColumns]="'5rem 1fr'"
+    [templateRows]="(state$ | async)?.editorProperties?.headerHeight"
+>
+    <div flex>
+        <fa-icon [icon]="['fas', 'ellipsis-v']"></fa-icon>
+    </div>
+    <div    
+        flex
+        [justifyContent]="'flex-start'"
+    >
+        <app-tab-view 
+            [tabs]="(state$ | async)?.tabs"
+            (tabClick)="onTabClick($event)"
+        ></app-tab-view>
+    </div>
+</div>
+<div
+    grid
+    [templateColumns]="'5rem 1fr'"
+    [templateRows]="'50px'"
+    [class]="'SubHeader'"
+>
+    <div flex>
+        <fa-icon [icon]="['fas', 'cog']"></fa-icon>
+    </div>
+    <div    
+        flex
+        [justifyContent]="'flex-start'"
+    >
+        <app-tab-view
+            [tabSize]="'75px'"
+            [tabs]="(state$ | async)?.sceneMenu"
+        ></app-tab-view>
+    </div>
+</div>
+<div
+    grid
+    [templateColumns]="(state$ | async)?.editorProperties?.bodySize"
+    [templateRows]="'calc(100vh - ' + ((state$ | async)?.editorProperties?.headerHeight) + ' - 50px)'"
+>
+    <div flex>
+        <app-sidebar></app-sidebar>
+    </div>
+    <div flex>
+        <router-outlet></router-outlet>
+    </div>
+    <div flex>
+        <app-inspector></app-inspector>
+    </div>
+</div>

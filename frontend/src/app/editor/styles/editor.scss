@@ -1,0 +1,11 @@
+@import 'partials/variables';
+@import 'partials/core';
+@import 'partials/form';
+@import 'partials/components/export';
+
+html, body {
+    margin: 0;
+    padding: 0;
+
+    height: 100%;
+}

@@ -29,3 +29,28 @@ AVE stands for Angular Visual Editor, the purpose of this project is to create a
 ## Boostrap
 
 This app is created using https://github.com/maximegris/angular-electron.
+
+## Running
+
+### Frontend
+
+```bash
+cd frontend
+npm run ng:serve:web
+```
+
+### Backend
+
+#### node
+
+```bash
+cd backend
+npm run devStart
+```
+
+#### mongod
+!!! you need to set mongod PATH env variable (https://dangphongvanthanh.wordpress.com/2017/06/12/add-mongos-bin-folder-to-the-path-environment-variable/).
+```bash
+cd backend
+mongod --dbpath ./data
+```
