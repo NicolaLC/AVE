@@ -1,7 +1,8 @@
-import { NewProjectComponent } from './new-project/new-project.component';
+import { NewProjectComponent } from '../new-project/new-project.component';
 import { WelcomeComponent } from './welcome.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { GuiModule } from '../../gui/gui.module';
 
 const views = [
   WelcomeComponent,
@@ -9,7 +10,8 @@ const views = [
 ]
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    GuiModule
   ],
   declarations: [
     ...views

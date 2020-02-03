@@ -1,16 +1,21 @@
-label {
-    font-size: map-get($map: $fontSizes, $key: small);
-    padding-bottom: map-get($map: $padding, $key: small);
-    color: map-get($map: $colors, $key: primary);
-    font-weight: bold;
-    padding-left: map-get($map: $padding, $key: small);
-}
-input {
-    width: calc(100% - #{map-get($map: $padding, $key: normal)} *2);
-    background-color: map-get($map: $colors, $key: 'background');
-    color: map-get($map: $colors, $key: on-background);
-    outline: none;
-    border: none;
-    border-radius: 3px;
-    padding:map-get($map: $padding, $key: normal) map-get($map: $padding, $key: small);
+app-input {
+    label {
+        font-size: map-get($map: $fontSizes, $key: small);
+        color: map-get($map: $colors, $key: primary);
+        font-weight: bold;
+        padding-left: map-get($map: $padding, $key: normal);
+    }
+    input {
+        width: calc(100% - #{map-get($map: $padding, $key: normal)} *2);
+        background-color: map-get($map: $colors, $key: 'background');
+        color: map-get($map: $colors, $key: on-background);
+        outline: none;
+        border: none;
+        border-radius: 3px;
+        padding:map-get($map: $padding, $key: small);
+    }
+    fa-icon {
+        font-size: map-get($map: $fontSizes, $key: small);
+        color: map-get($map: $colors, $key: primary);
+    }
 }

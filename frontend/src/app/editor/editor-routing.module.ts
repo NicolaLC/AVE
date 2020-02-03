@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { EditorComponent } from './editor.component';
-import { NewProjectComponent } from './views/welcome/new-project/new-project.component';
+import { NewProjectComponent } from './views/new-project/new-project.component';
 
 const routes: Routes = [
   {
