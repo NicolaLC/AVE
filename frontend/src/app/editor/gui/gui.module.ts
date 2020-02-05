@@ -24,7 +24,11 @@ import {
   faSave,
   faThList,
   faMouse,
-  faCode
+  faCode,
+  faArrowLeft,
+  faArrowRight,
+  faExclamation,
+  faExclamationTriangle
 } from "@fortawesome/free-solid-svg-icons";
 import { SidebarComponent } from "./components/sidebar.component";
 import { ButtonComponent } from "./components/button.component";
@@ -32,6 +36,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FormComponent } from "./components/form.component";
 import { SafePipe } from "./safe.pipe";
 import { SelectComponent } from "./components/select.component";
+import { MonacoEditorModule } from "ngx-monaco-editor";
 
 const components = [
   InputComponent,
@@ -50,10 +55,18 @@ const pipes = [SafePipe];
     FontAwesomeModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MonacoEditorModule
   ],
   declarations: [...directives, ...components, ...pipes],
-  exports: [...directives, ...components, ...pipes, FontAwesomeModule]
+  exports: [
+    ...directives,
+    ...components,
+    ...pipes,
+    FontAwesomeModule,
+    MonacoEditorModule,
+    FormsModule
+  ]
 })
 export class GuiModule {
   constructor(private library: FaIconLibrary) {
@@ -70,7 +83,11 @@ export class GuiModule {
       faRedo,
       faSave,
       faThList,
-      faCode
+      faCode,
+      faArrowLeft,
+      faArrowRight,
+      faExclamation,
+      faExclamationTriangle
     );
   }
 }

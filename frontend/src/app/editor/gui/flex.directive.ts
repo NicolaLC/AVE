@@ -12,4 +12,6 @@ export class FlexDirective {
   @Input() @HostBinding("style.alignItems") alignItems: string = "center";
   @Input() @HostBinding("style.justifyItems") justifyItems: string = "center";
   @Input() @HostBinding("style.flexWrap") wrap: string = "no-wrap";
+  @Input() @HostBinding("style.width") width: string = "auto";
+  @Input() @HostBinding("style.height") height: string = "auto";
 }

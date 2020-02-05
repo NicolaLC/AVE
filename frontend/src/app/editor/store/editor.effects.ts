@@ -98,7 +98,7 @@ export class EditorEffects {
     this.actions$.pipe(
       ofType(createNewProjectOk),
       switchMap(action => {
-        alert("Applcation created succesfully");
+        alert("Application created succesfully");
         return EMPTY;
       })
     )
@@ -112,6 +112,9 @@ export class EditorEffects {
           .get(`${editorRoutes.runProject}/${project._id}`)
           .pipe(
             switchMap(response => {
+              const { message, fileData } = response;
+              alert(message);
+              project.fileData = fileData;
               return [navigate({ url: "project-edit" })];
             }),
             catchError(err => EMPTY)

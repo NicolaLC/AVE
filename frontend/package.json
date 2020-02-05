@@ -96,6 +96,7 @@
     "@ngrx/effects": "8.6.0",
     "@ngrx/store": "8.6.0",
     "@ngrx/store-devtools": "8.6.0",
-    "lodash": "4.17.15"
+    "lodash": "4.17.15",
+    "ngx-monaco-editor": "8.1.1"
   }
 }

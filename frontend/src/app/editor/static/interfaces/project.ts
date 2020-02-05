@@ -13,4 +13,5 @@ export class Project {
   title: string;
   port: number;
   path: string;
+  fileData?: any;
 }

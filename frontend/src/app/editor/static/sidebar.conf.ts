@@ -2,7 +2,7 @@ import { Tab } from "./interfaces/tab";
 export const welcomeSidebarTabs: Tab[] = [
   {
     active: false,
-    routerLink: "project-lists",
+    routerLink: "projects-list",
     icon: ["fas", "th-list"],
     title: "Project list"
   },

@@ -1,25 +1,32 @@
+html,
+body {
+  background-color: map-get($map: $colors, $key: "background");
+  color: map-get($map: $colors, $key: on-background);
+  font-family: $mainFont;
 
-html, body {
-    background-color: map-get($map: $colors, $key: 'background');
-    color: map-get($map: $colors, $key: on-background);
-    font-family: $mainFont;
+  .SubHeader {
+    background-color: map-get($map: $colors, $key: primary-variant);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: map-get($map: $fontSizes, $key: small);
+    color: map-get($map: $colors, $key: on-primary);
 
-    .SubHeader {
-        background-color: map-get($map: $colors, $key: primary-variant);
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: map-get($map: $fontSizes, $key: small);
+    app-tab-view {
+      background-color: unset;
+      .Tab {
         color: map-get($map: $colors, $key: on-primary);
+        font-size: unset;
+        min-width: unset;
 
-        app-tab-view {
-            background-color: unset;
-            .Tab {
-                color: map-get($map: $colors, $key: on-primary);
-                font-size: unset;
-                min-width: unset;
-
-                text-decoration: underline;
-            }
-        }
+        text-decoration: underline;
+      }
     }
+  }
+
+  .Hidden {
+    display: none !important;
+    > * {
+      display: none !important;
+    }
+  }
 }

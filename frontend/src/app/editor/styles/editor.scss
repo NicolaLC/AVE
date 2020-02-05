@@ -16,6 +16,7 @@ body {
   app-project-edit {
     width: 100%;
     height: 100%;
+    overflow: auto;
   }
 
   app-new-project,
@@ -28,6 +29,8 @@ body {
     display: flex;
     place-content: flex-start;
     place-items: flex-start;
+
+    overflow: auto;
   }
 
   iframe {
@@ -36,5 +39,30 @@ body {
     border: none;
     outline: none;
     background-color: white;
+  }
+
+  app-custom-element {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    display: block;
+
+    [grid] {
+      height: 100%;
+    }
+
+    #customElementWrapper,
+    #customElementCode {
+      width: 100%;
+      height: 100%;
+
+      ngx-monaco-editor {
+        width: 100%;
+        height: 100%;
+        .editor-container {
+          height: 100%;
+        }
+      }
+    }
   }
 }

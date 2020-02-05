@@ -1,33 +1,30 @@
-import { EditorEffects } from './editor/store/editor.effects';
-import 'reflect-metadata';
-import '../polyfills';
+import "../polyfills";
+import "reflect-metadata";
 
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { CoreModule } from './core/core.module';
-import { SharedModule } from './shared/shared.module';
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { BrowserModule } from "@angular/platform-browser";
+import { EffectsModule } from "@ngrx/effects";
+import { StoreModule } from "@ngrx/store";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { CoreModule } from "./core/core.module";
+import { EditorModule } from "./editor/editor.module";
+import { EditorEffects } from "./editor/store/editor.effects";
+import { editorReducer } from "./editor/store/editor.reducer";
+import { HomeModule } from "./home/home.module";
+import { SharedModule } from "./shared/shared.module";
+import { NGX_MONACO_EDITOR_CONFIG } from "ngx-monaco-editor";
 
 // NG Translate
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-import { HomeModule } from './home/home.module';
-
-import { AppComponent } from './app.component';
-import { EditorModule } from './editor/editor.module';
-import { GuiModule } from './editor/gui/gui.module';
-import { StoreModule } from '@ngrx/store';
-import { editorReducer } from './editor/store/editor.reducer';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { EffectsModule } from '@ngrx/effects';
-
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
 }
 
 @NgModule({
@@ -54,7 +51,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       maxAge: 10
     })
   ],
-  providers: [],
+  providers: [{ provide: NGX_MONACO_EDITOR_CONFIG, useValue: {} }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
