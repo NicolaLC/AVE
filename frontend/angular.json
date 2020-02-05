@@ -29,7 +29,7 @@
                 "output": "./assets/monaco/"
               }
             ],
-            "styles": ["src/styles.scss"],
+            "styles": ["src/styles.scss", "node_modules/ngx-toastr/toastr.css"],
             "scripts": [],
             "customWebpackConfig": {
               "path": "./angular.webpack.js"
@@ -120,7 +120,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "scripts": [],
-            "styles": ["src/styles.scss"],
+            "styles": ["src/styles.scss", "node_modules/ngx-toastr/toastr.css"],
             "assets": [
               "src/assets",
               "src/favicon.ico",

@@ -6,6 +6,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { GridDirective } from "./grid.directive";
 import { FlexDirective } from "./flex.directive";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
   FontAwesomeModule,
   FaIconLibrary
@@ -37,7 +38,8 @@ import { FormComponent } from "./components/form.component";
 import { SafePipe } from "./safe.pipe";
 import { SelectComponent } from "./components/select.component";
 import { MonacoEditorModule } from "ngx-monaco-editor";
-
+import { KeyboardShortcutsModule } from "ng-keyboard-shortcuts";
+import { ToastrModule } from "ngx-toastr";
 const components = [
   InputComponent,
   TabViewComponent,
@@ -56,7 +58,10 @@ const pipes = [SafePipe];
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    MonacoEditorModule
+    MonacoEditorModule,
+    KeyboardShortcutsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   declarations: [...directives, ...components, ...pipes],
   exports: [
@@ -65,7 +70,10 @@ const pipes = [SafePipe];
     ...pipes,
     FontAwesomeModule,
     MonacoEditorModule,
-    FormsModule
+    FormsModule,
+    KeyboardShortcutsModule,
+    BrowserAnimationsModule,
+    ToastrModule
   ]
 })
 export class GuiModule {

@@ -7,23 +7,30 @@ import {
 } from "@angular/core";
 
 import { Project } from "../../../static/interfaces/project";
+import { EditorService } from "../../../editor.service";
+import { editorRoutes } from "../../../serviceRoutes/editor.routes";
+import { first, map, catchError } from "rxjs/operators";
+import { EMPTY } from "rxjs";
+import { ShortcutInput, AllowIn } from "ng-keyboard-shortcuts";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-custom-element",
   template: `
+    <ng-keyboard-shortcuts [shortcuts]="shortcuts"></ng-keyboard-shortcuts>
     <div grid [templateColumns]="'50% 50%'">
-      <div id="customElementCode" grid [templateRows]="'1fr 50px'">
-        <ngx-monaco-editor
-          [options]="editorOptions"
-          [(ngModel)]="code"
-        ></ngx-monaco-editor>
-        <div>
+      <div id="customElementCode" grid [templateRows]="'50px 1fr'">
+        <div flex [alignContent]="'flex-start'" [justifyContent]="'flex-start'">
           <app-button
             label="Salva"
             [icon]="['fas', 'save']"
             (buttonClick)="save()"
           ></app-button>
         </div>
+        <ngx-monaco-editor
+          [options]="editorOptions"
+          [(ngModel)]="code"
+        ></ngx-monaco-editor>
       </div>
       <div flex [width]="'100%'" id="customElementWrapper">
         <iframe></iframe>
@@ -39,7 +46,13 @@ export class CustomElementWrapperComponent implements AfterContentInit {
   code: any = null;
   nestedDocument;
   nestedWindow;
-  constructor(private elementRef: ElementRef) {}
+  shortcuts: ShortcutInput[] = [];
+
+  constructor(
+    private elementRef: ElementRef,
+    private service: EditorService,
+    private toastr: ToastrService
+  ) {}
 
   ngAfterContentInit(): void {
     this.nestedWindow = this.elementRef.nativeElement.querySelector(
@@ -48,6 +61,12 @@ export class CustomElementWrapperComponent implements AfterContentInit {
     this.nestedDocument = this.nestedWindow.document;
     this.loadScript();
     this.generateCustom();
+    this.shortcuts.push({
+      key: "ctrl + s",
+      preventDefault: true,
+      allowIn: [AllowIn.Textarea, AllowIn.Input],
+      command: e => this.save()
+    });
   }
 
   loadScript() {
@@ -84,12 +103,44 @@ export class CustomElementWrapperComponent implements AfterContentInit {
     const domElement = this.nestedDocument.createElement(this.project.name);
     setTimeout(() => {
       this.nestedDocument.open();
+      domElement.addEventListener(`${this.project.name}-initialized`, () => {
+        this.toastr.info("received initialized message from CustomComponent");
+      });
+      domElement.addEventListener(`${this.project.name}-disposed`, () => {
+        this.toastr.info("received disposed message from CustomComponent");
+      });
       this.nestedDocument.appendChild(domElement);
       this.nestedDocument.close();
+      setTimeout(() => {
+        domElement.dispatchEvent(
+          new CustomEvent(`${this.project.name}-update`, {
+            bubbles: true,
+            detail: {
+              messageFromAve: `AVE ${this.project.name}!`
+            }
+          })
+        );
+      }, 1500);
     }, 100);
   }
 
   save() {
-    this.updateScript();
+    this.service
+      .post(editorRoutes.saveFile, {
+        path: `${this.project.path}.js`,
+        content: this.code
+      })
+      .pipe(
+        first(),
+        map(response => {
+          this.toastr.success(response.message);
+          this.updateScript();
+        }),
+        catchError(err => {
+          this.toastr.error(err.message);
+          return EMPTY;
+        })
+      )
+      .subscribe();
   }
 }

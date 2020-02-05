@@ -11,6 +11,7 @@ import { Injectable } from "@angular/core";
 import { of, EMPTY } from "rxjs";
 import { exhaustMap, map, catchError, switchMap } from "rxjs/operators";
 import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 import {
   getProjects,
   getProjectsOk,
@@ -88,7 +89,7 @@ export class EditorEffects {
     this.actions$.pipe(
       ofType(createNewProjectKo),
       switchMap(action => {
-        alert("An error has occurred while creating the app");
+        this.toastr.error("An error has occurred while creating the app");
         return EMPTY;
       })
     )
@@ -98,7 +99,7 @@ export class EditorEffects {
     this.actions$.pipe(
       ofType(createNewProjectOk),
       switchMap(action => {
-        alert("Application created succesfully");
+        this.toastr.success("Application created succesfully");
         return EMPTY;
       })
     )
@@ -113,11 +114,14 @@ export class EditorEffects {
           .pipe(
             switchMap(response => {
               const { message, fileData } = response;
-              alert(message);
+              this.toastr.success(message);
               project.fileData = fileData;
               return [navigate({ url: "project-edit" })];
             }),
-            catchError(err => EMPTY)
+            catchError(err => {
+              this.toastr.error(err.message);
+              return EMPTY;
+            })
           );
       })
     )
@@ -126,6 +130,7 @@ export class EditorEffects {
   constructor(
     private actions$: Actions,
     private router: Router,
-    private service: EditorService
+    private service: EditorService,
+    private toastr: ToastrService
   ) {}
 }
