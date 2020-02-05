@@ -1,3 +1,5 @@
 export const editorRoutes = {
-    tabs: 'editor/tabs'
-}
+  tabs: "editor/tabs",
+  projects: "editor/projects",
+  runProject: "editor/project/run"
+};

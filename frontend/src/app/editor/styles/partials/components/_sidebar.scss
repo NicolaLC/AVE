@@ -1,9 +1,7 @@
 app-sidebar {
-    width: calc(100% - #{map-get($map: $padding, $key: normal)}*2);
-    height: calc(100% - #{map-get($map: $padding, $key: normal)}*2);
-    
-    background-color: map-get($map: $colors, $key: surface);
-    color: map-get($map: $colors, $key: on-surface);
+  width: 100%;
+  height: 100%;
 
-    padding: map-get($map: $padding, $key: normal);
+  background-color: map-get($map: $colors, $key: surface);
+  color: map-get($map: $colors, $key: on-surface);
 }

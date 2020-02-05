@@ -1,38 +1,40 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-
-export class Tab {
-    label: string;
-    routerLink?: string;
-    active: boolean;
-    icon?:string[];
-    addNewOnClick?: boolean;
-}
-
+import { Tab } from "../../static/interfaces/tab";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output
+} from "@angular/core";
 @Component({
-  selector: 'app-tab-view',
+  selector: "app-tab-view",
   template: `
-    <div 
-        grid
-        [templateColumns]="templateColumns()"
-        [templateRows]="'100%'"
+    <div
+      grid
+      [templateColumns]="templateColumns()"
+      [templateRows]="templateRows()"
     >
-        <ng-container
-            *ngFor="let tab of tabs"
+      <ng-container *ngFor="let tab of tabs">
+        <div
+          flex
+          (click)="tabClick.emit(tab, $event)"
+          [ngClass]="{ Tab: true, Active: tab.active }"
+          [title]="tab.title || tab.label || tab.routerLink"
         >
-            <div
-                flex 
-                (click)="tabClick.emit(tab,$event)"
-                [ngClass]="{'Tab': true, 'Active': tab.active}">
-                <fa-icon *ngIf="tab.icon" [icon]="tab.icon"></fa-icon> {{tab.label}}
-            </div>
-        </ng-container>
+          <fa-icon *ngIf="tab.icon" [icon]="tab.icon"></fa-icon> {{ tab.label }}
+        </div>
+      </ng-container>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TabViewComponent {
-    @Input() tabs: Tab[] = [];
-    @Input() tabSize = '200px';
-    @Output() tabClick = new EventEmitter<{tab: Tab, event: MouseEvent}>();
-    templateColumns = () => (this.tabs || []).map(_ => this.tabSize).join(' ');
+  @Input() tabs: Tab[] = [];
+  @Input() tabSize = "200px";
+  @Input() vertical = false;
+  @Output() tabClick = new EventEmitter<{ tab: Tab; event: MouseEvent }>();
+  templateColumns = () =>
+    this.vertical ? "1fr" : (this.tabs || []).map(_ => this.tabSize).join(" ");
+  templateRows = () =>
+    this.vertical ? (this.tabs || []).map(_ => this.tabSize).join(" ") : "1fr";
 }

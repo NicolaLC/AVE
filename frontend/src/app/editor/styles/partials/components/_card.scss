@@ -1,0 +1,13 @@
+.Card {
+  min-width: 350px;
+  background-color: map-get($map: $colors, $key: primary);
+  color: map-get($map: $colors, $key: on-primary);
+  padding: map-get($map: $padding, $key: small);
+  & + .Card {
+    margin-left: map-get($map: $padding, $key: normal);
+  }
+
+  h2 {
+    margin: 0;
+  }
+}

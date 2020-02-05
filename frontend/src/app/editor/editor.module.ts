@@ -1,5 +1,5 @@
-import { EditorService } from './editor.service';
-import { ViewsModule } from './views/welcome/views.module';
+import { EditorService } from "./editor.service";
+import { ViewsModule } from "./views/views.module";
 import { NgModule } from "@angular/core";
 import { EditorComponent } from "./editor.component";
 import { CommonModule } from "@angular/common";
@@ -10,14 +10,14 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 @NgModule({
   imports: [
-    CommonModule, 
-    SharedModule, 
-    EditorRoutingModule, 
+    CommonModule,
+    SharedModule,
+    EditorRoutingModule,
     GuiModule,
     ViewsModule,
     FontAwesomeModule
   ],
   declarations: [EditorComponent],
-  providers:[EditorService]
+  providers: [EditorService]
 })
 export class EditorModule {}

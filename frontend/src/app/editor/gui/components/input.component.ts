@@ -1,38 +1,52 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
+import { FormGroup } from "@angular/forms";
+
 @Component({
-  selector: 'app-input',
+  selector: "app-input",
   template: `
     <div flex>
+      <div
+        grid
+        [templateRows]="'auto auto'"
+        [rowGap]="'.5rem'"
+        [class]="'InputWrapper'"
+      >
         <div
+          flex
           grid
-          [templateRows]="'auto auto'"
-          [rowGap]="'.5rem'"
-          [class]="'InputWrapper'"
+          [templateColumns]="'auto 1fr'"
+          [justifyItems]="'flex-start'"
         >
-        <div 
-            flex
-            grid
-            [templateColumns]="'auto 1fr'"
-            [justifyItems]="'flex-start'">
-            <div flex> <fa-icon [icon]="icon"></fa-icon> </div>
-            <label [for]="inputId">{{label}}</label>
+          <div flex><fa-icon [icon]="icon"></fa-icon></div>
+          <label [for]="inputId">{{ label }}</label>
         </div>
-        <div 
+        <div
           flex
           [alignItems]="'flex-start'"
-          [direction]="'column'">
-          <input [id]="inputId" [placeholder]="inputPlaceholder" [value]="inputValue" [type]="inputType"/>
+          [direction]="'column'"
+          [formGroup]="parentFormGroup"
+        >
+          <input
+            [formControlName]="inputName"
+            [id]="inputId"
+            [placeholder]="inputPlaceholder"
+            [type]="inputType"
+            [required]="isRequired"
+          />
         </div>
-        </div>
+      </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputComponent {
-    @Input() icon: string[] = ['fas', 'keyboard'];
-    @Input() label: string = 'Input component';
-    @Input() inputId: string = ''
-    @Input() inputPlaceholder: string = '';
-    @Input() inputValue: any;
-    @Input() inputType: string = 'text';
+  @Input() icon: string[] = ["fas", "keyboard"];
+  @Input() label: string = "Input component";
+  @Input() inputId: string = "";
+  @Input() inputName: string = "";
+  @Input() inputPlaceholder: string = "";
+  @Input() inputValue: any;
+  @Input() inputType: string = "text";
+  @Input() parentFormGroup: FormGroup;
+  @Input() isRequired = false;
 }
