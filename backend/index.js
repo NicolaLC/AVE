@@ -14,7 +14,9 @@ db.once('open', () => console.log('connected to database'));
 app.use(express.json())
 app.use(cors())
 
-const editorRouter = require('./routes/editor')
-app.use('/editor', editorRouter)
+const tabsRouter = require('./routes/tabs')
+app.use('/editor', tabsRouter)
+const projectsRouter = require('./routes/projects')
+app.use('/editor', projectsRouter)
 
 app.listen(3000, () => console.log('server started'));
