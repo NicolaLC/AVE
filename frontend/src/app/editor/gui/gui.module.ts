@@ -23,13 +23,15 @@ import {
   faRedo,
   faSave,
   faThList,
-  faMouse
+  faMouse,
+  faCode
 } from "@fortawesome/free-solid-svg-icons";
 import { SidebarComponent } from "./components/sidebar.component";
 import { ButtonComponent } from "./components/button.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FormComponent } from "./components/form.component";
 import { SafePipe } from "./safe.pipe";
+import { SelectComponent } from "./components/select.component";
 
 const components = [
   InputComponent,
@@ -37,7 +39,8 @@ const components = [
   SidebarComponent,
   InspectorComponent,
   ButtonComponent,
-  FormComponent
+  FormComponent,
+  SelectComponent
 ];
 const directives = [FlexDirective, GridDirective];
 const pipes = [SafePipe];
@@ -67,7 +70,7 @@ export class GuiModule {
       faRedo,
       faSave,
       faThList,
-      faMouse
+      faCode
     );
   }
 }

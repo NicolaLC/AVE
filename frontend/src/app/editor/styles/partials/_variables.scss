@@ -6,17 +6,19 @@ Put here global variables
 $mainFont: "Roboto Mono", monospace;
 
 $colors: (
-  "background": #071e3d,
-  "surface": #000,
-  "error": #ff536f,
-  "primary": #21e6c1,
-  "primary-variant": #278ea5,
-  "secondary": #1f4287,
+  "background": #25335c,
+  "surface": #17151a,
+  "error": #f24a47,
+  "success": #21e6c1,
+  "primary": #9bcfff,
+  "primary-variant": #016af3,
+  "secondary": #242424,
   "on-primary": #000,
   "on-secondary": #ffffff,
   "on-background": #ffffff,
   "on-surface": #ffffff,
-  "on-error": #fff
+  "on-error": #fff,
+  "on-success": #000
 );
 
 $fontSizes: (

@@ -71,14 +71,16 @@ export class EditorEffects {
     this.actions$.pipe(
       ofType(createNewProject),
       switchMap(action => {
-        return this.service.post(editorRoutes.projects, { ...action }).pipe(
-          map(response => {
-            if (response) {
-              return createNewProjectOk();
-            }
-          }),
-          catchError(err => of(createNewProjectKo()))
-        );
+        return this.service
+          .post(editorRoutes.projects, { ...action.project })
+          .pipe(
+            map(response => {
+              if (response) {
+                return createNewProjectOk();
+              }
+            }),
+            catchError(err => of(createNewProjectKo()))
+          );
       })
     )
   );

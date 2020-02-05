@@ -1,7 +1,16 @@
+export enum PROJECT_TYPE {
+  ANGULAR = "ANGULAR",
+  CUSTOM_ELEMENT = "CUSTOM_ELEMENT"
+}
+export const PROJECT_TYPE_ICONS = {
+  [PROJECT_TYPE.ANGULAR]: ["fas", "window-maximize"],
+  [PROJECT_TYPE.CUSTOM_ELEMENT]: ["fas", "code"]
+};
 export class Project {
   _id: string;
+  type: PROJECT_TYPE;
   name: string;
   title: string;
   port: number;
-  path?: string;
+  path: string;
 }

@@ -18,7 +18,7 @@ export const getProjectsKo = createAction("[AVE Editor] GetProjects-KO");
 
 export const createNewProject = createAction(
   "[AVE Editor] CreateNewProject",
-  props<{ name: string; title: string }>()
+  props<{ project: Project }>()
 );
 export const createNewProjectOk = createAction(
   "[AVE Editor] CreateNewProject-OK"

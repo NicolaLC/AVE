@@ -1,18 +1,21 @@
-import { NgForm, FormGroup } from "@angular/forms";
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Output,
-  Input
-} from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { FormGroup, NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-form",
   template: `
-    <form [formGroup]="form" novalidate grid [rowGap]="'.5rem'">
+    <form
+      [formGroup]="form"
+      novalidate
+      grid
+      [rowGap]="'1rem'"
+      [columnGap]="'1rem'"
+    >
       <ng-content></ng-content>
       <app-button
+        flex
+        [justifyContent]="'flex-start'"
+        [alignItems]="'flex-end'"
         [label]="'Save'"
         [icon]="['fas', 'save']"
         [buttonDisabled]="form.invalid"

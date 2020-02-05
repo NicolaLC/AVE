@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 import { FormGroup } from "@angular/forms";
+import { SelectOption } from "../../static/interfaces/select-options";
 
 @Component({
-  selector: "app-input",
+  selector: "app-select",
   template: `
     <div flex>
       <div
@@ -26,27 +27,35 @@ import { FormGroup } from "@angular/forms";
           [direction]="'column'"
           [formGroup]="parentFormGroup"
         >
-          <input
+          <select
             [formControlName]="inputName"
             [id]="inputId"
-            [placeholder]="inputPlaceholder"
-            [type]="inputType"
             [required]="isRequired"
-          />
+          >
+            <option
+              *ngFor="let option of inputOptions"
+              flex
+              [display]="'inline-flex'"
+              [value]="option.value"
+              [selected]="parentFormGroup.value[inputName] === option.value"
+            >
+              <fa-icon *ngIf="option.icon" [icon]="option.icon"></fa-icon>
+              {{ option.label }}
+            </option>
+          </select>
         </div>
       </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class InputComponent {
+export class SelectComponent {
   @Input() icon: string[] = ["fas", "keyboard"];
   @Input() label: string = "Input component";
   @Input() inputId: string = "";
   @Input() inputName: string = "";
-  @Input() inputPlaceholder: string = "";
   @Input() inputValue: any;
-  @Input() inputType: string = "text";
+  @Input() inputOptions: SelectOption[] = [];
   @Input() parentFormGroup: FormGroup;
   @Input() isRequired = false;
 }

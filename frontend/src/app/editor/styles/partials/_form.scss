@@ -1,4 +1,5 @@
 app-input {
+  height: 100%;
   label {
     font-size: map-get($map: $fontSizes, $key: small);
     color: map-get($map: $colors, $key: primary);
@@ -7,14 +8,40 @@ app-input {
   }
   input {
     width: calc(100% - #{map-get($map: $padding, $key: small)}* 2);
-    padding: map-get($map: $padding, $key: small);
+    padding: map-get($map: $padding, $key: normal)
+      map-get($map: $padding, $key: small);
 
-    background-color: map-get($map: $colors, $key: "primary");
-    color: map-get($map: $colors, $key: on-primary);
+    background-color: map-get($map: $colors, $key: "secondary");
+    color: map-get($map: $colors, $key: on-secondary);
 
     outline: none;
     border: none;
-    border-radius: 3px;
+  }
+  fa-icon {
+    font-size: map-get($map: $fontSizes, $key: small);
+    color: map-get($map: $colors, $key: primary);
+  }
+}
+
+app-select {
+  height: 100%;
+  label {
+    font-size: map-get($map: $fontSizes, $key: small);
+    color: map-get($map: $colors, $key: primary);
+    font-weight: bold;
+    padding-left: map-get($map: $padding, $key: normal);
+  }
+  select {
+    width: 100%;
+    padding: 0.85rem map-get($map: $padding, $key: small);
+
+    background-color: map-get($map: $colors, $key: "secondary");
+    color: map-get($map: $colors, $key: on-secondary);
+
+    outline: none;
+    border: none;
+
+    font-family: "FontAwesome", $mainFont;
   }
   fa-icon {
     font-size: map-get($map: $fontSizes, $key: small);
@@ -25,17 +52,16 @@ app-input {
 app-button {
   .Button {
     max-width: calc(100% - #{map-get($map: $padding, $key: normal)}* 2);
-    padding: map-get($map: $padding, $key: small)
-      map-get($map: $padding, $key: normal);
+    padding: map-get($map: $padding, $key: normal);
     font-size: map-get($map: $fontSizes, $key: small);
     text-transform: uppercase;
+    font-weight: bold;
     opacity: 0.9;
 
     cursor: pointer;
 
-    border-radius: 3px;
-    background-color: map-get($map: $colors, $key: "secondary");
-    color: map-get($map: $colors, $key: on-secondary);
+    background-color: map-get($map: $colors, $key: "success");
+    color: map-get($map: $colors, $key: on-success);
 
     fa-icon {
       margin-right: map-get($map: $padding, $key: small);
@@ -56,5 +82,19 @@ app-button {
       user-select: none;
       cursor: not-allowed;
     }
+  }
+}
+
+app-form {
+  width: 100%;
+  &#newProjectForm {
+    form {
+      grid-template-columns: repeat(3, 1fr);
+      width: 100%;
+    }
+  }
+
+  app-button {
+    grid-column: 1 / -1;
   }
 }
