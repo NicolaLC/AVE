@@ -12,17 +12,17 @@ AVE stands for Angular Visual Editor, the purpose of this project is to create a
 ## Development steps
 
 1. [0.0.1] Deploy a demo of the editor including:
-    * UI interface
-    * Simple routing management
-    * Simple styling
+   - UI interface
+   - Simple routing management
+   - Simple styling
 2. [0.0.2] Deploy a functional demo of the editor including:
-    * Project management
-    * Save / Load data
-    * Deploy
+   - Project management
+   - Save / Load data
+   - Deploy
 3. [0.0.3] Deploy a functional demo of the editor including:
-    * Table / Form management
-    * REST API management
-    * State management
+   - Table / Form management
+   - REST API management
+   - State management
 
 ... and others in the future
 
@@ -49,8 +49,12 @@ npm run devStart
 ```
 
 #### mongod
+
 !!! you need to set mongod PATH env variable (https://dangphongvanthanh.wordpress.com/2017/06/12/add-mongos-bin-folder-to-the-path-environment-variable/).
+
 ```bash
 cd backend
 mongod --dbpath ./data
 ```
+
+NOTA: in caso di accesso negato lanciare : mongod --dbpath "path" --repair

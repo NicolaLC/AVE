@@ -5,16 +5,16 @@ import { EditorComponent } from "./editor.component";
 import { CommonModule } from "@angular/common";
 import { SharedModule } from "../shared/shared.module";
 import { EditorRoutingModule } from "./editor-routing.module";
-import { GuiModule } from "./gui/gui.module";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { GuiModule } from "./gui/gui.module";
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     EditorRoutingModule,
-    GuiModule,
     ViewsModule,
+    GuiModule,
     FontAwesomeModule
   ],
   declarations: [EditorComponent],

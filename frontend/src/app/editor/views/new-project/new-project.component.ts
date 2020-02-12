@@ -29,7 +29,9 @@ import { PROJECT_TYPE } from "../../static/interfaces/project";
       ></app-select>
       <app-input
         [label]="
-          form.value.type === 'ANGULAR' ? 'Project title' : 'Project class name'
+          form.value.type === 'CUSTOM_ELEMENT'
+            ? 'Project class name'
+            : 'Project title'
         "
         [inputName]="'title'"
         [parentFormGroup]="form"
@@ -39,7 +41,7 @@ import { PROJECT_TYPE } from "../../static/interfaces/project";
         [label]="'Project port'"
         [inputName]="'port'"
         [parentFormGroup]="form"
-        [isRequired]="form.value.type === 'ANGULAR'"
+        [isRequired]="form.value.type !== 'CUSTOM_ELEMENT'"
       ></app-input>
       <app-input
         [label]="'Project path'"

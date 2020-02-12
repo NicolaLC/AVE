@@ -29,7 +29,8 @@ import {
   faArrowLeft,
   faArrowRight,
   faExclamation,
-  faExclamationTriangle
+  faExclamationTriangle,
+  faBook
 } from "@fortawesome/free-solid-svg-icons";
 import { SidebarComponent } from "./components/sidebar.component";
 import { ButtonComponent } from "./components/button.component";
@@ -95,7 +96,8 @@ export class GuiModule {
       faArrowLeft,
       faArrowRight,
       faExclamation,
-      faExclamationTriangle
+      faExclamationTriangle,
+      faBook
     );
   }
 }

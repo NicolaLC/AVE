@@ -18,5 +18,7 @@ const tabsRouter = require('./routes/tabs')
 app.use('/editor', tabsRouter)
 const projectsRouter = require('./routes/projects')
 app.use('/editor', projectsRouter)
+const filesRouter = require('./routes/file')
+app.use('/', filesRouter)
 
 app.listen(3000, () => console.log('server started'));
